@@ -1,0 +1,32 @@
+<div class="container my-5">
+    <h1>Profil</h1>
+    <div class="">
+        <div class="">
+            <span class="text-muted">Prénom : </span>
+            <%= @user.first_name %>
+        </div>
+        <div class="">
+            <span class="text-muted">Nom : </span>
+            <%= @user.last_name %>
+        </div>
+        <div class="">
+            <span class="text-muted">Description : </span>
+            <%= @user.description %>
+        </div>
+        <div class="">
+            <span class="text-muted">Email : </span>
+            <%= @user.email %>
+        </div>
+        <ul class="list-group mt-3">
+            <% current_user.organised_events.all.each do |c| %>
+                <li class="list-group-item d-flex justify-content-between">
+                    <%= c.title %>
+                    <%= link_to "Voir", event_path(c.id), class: "btn btn-outline-primary btn-sm" %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+    <p class="mt-3">
+        <%= link_to "Accueil", events_path, class: "btn btn-primary" %>
+    </p>
+</div>
